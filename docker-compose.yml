@@ -1,0 +1,19 @@
+version: '2'
+services:
+  kafka:
+    image: flozano/kafka:0.9.0.0
+    ports:
+      - "2181:2181"
+      - "9092:9092"
+    environment:
+      ADVERTISED_HOST: 172.17.0.2
+  connect: 
+    image: my-connect
+    depends_on:
+      - kafka
+
+#elasticsearch:
+#  image: elasticsearch
+#  ports:
+#    - "9200:9200"
+#    - "9300:9300"
